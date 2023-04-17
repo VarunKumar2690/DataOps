@@ -1,5 +1,15 @@
+
+
+
 -- Create a table for storing customer information
 CREATE TABLE customers (
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  email VARCHAR(50),
+  phone VARCHAR(15)
+);
+-- Create a table for storing customer information
+CREATE TABLE customers_1 (
   id INT PRIMARY KEY,
   name VARCHAR(50),
   email VARCHAR(50),

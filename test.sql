@@ -1,4 +1,6 @@
 
+-- Abhishek singh
+-- Varun Kumar
 
 -- Create a table for storing customer information
 CREATE TABLE customers (

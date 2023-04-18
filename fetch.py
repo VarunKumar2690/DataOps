@@ -1,11 +1,7 @@
 #pip install snowflake-connector-python
 #Import the Snowflake Connector for Python
 import snowflake.connector
-#dev brach
-#new changes
-#new change 2
-#new change 3
-#new change 4
+
 
 # Set up Snowflake connection parameters
 account = 'ml81433.central-india.azure'

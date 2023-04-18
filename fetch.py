@@ -1,6 +1,7 @@
 #pip install snowflake-connector-python
 #Import the Snowflake Connector for Python
 import snowflake.connector
+#new changes
 
 
 # Set up Snowflake connection parameters

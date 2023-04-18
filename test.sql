@@ -1,4 +1,5 @@
 
+
 -- Create a table for storing customer information
 CREATE TABLE customers (
   id INT PRIMARY KEY,

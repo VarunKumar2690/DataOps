@@ -3,6 +3,8 @@
 import snowflake.connector
 #dev brach
 
+#new chages
+
 # Set up Snowflake connection parameters
 account = 'ml81433.central-india.azure'
 user = 'VKUMAR50'

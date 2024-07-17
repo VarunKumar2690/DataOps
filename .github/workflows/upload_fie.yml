@@ -1,0 +1,34 @@
+name: Upload and Process File
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: 'File to upload'
+        required: true
+        type: artifact
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Download uploaded file
+      uses: actions/download-artifact@v4
+      with:
+        name: uploaded_file
+
+    - name: Process uploaded file
+      run: |
+        # Replace with the script or commands to process the uploaded file
+        echo "Processing ${GITHUB_WORKSPACE}/uploaded_file"
+        python process_file.py "${GITHUB_WORKSPACE}/uploaded_file"
+
+    - name: Upload results
+      uses: actions/upload-artifact@v4
+      with:
+        name: processed_results
+        path: results/

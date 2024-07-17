@@ -3,8 +3,8 @@ name: Generate Pie Chart from PDF
 on:
   workflow_dispatch:
     inputs:
-      pdf_file:
-        description: 'Upload your PDF file'
+      file_name:
+        description: 'Name of the PDF file to upload'
         required: true
 
 jobs:
@@ -13,10 +13,10 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.9'
 
@@ -24,18 +24,22 @@ jobs:
       run: |
         pip install PyPDF2 matplotlib
 
-    - name: Upload PDF file
-      uses: actions/upload-artifact@v2
+    - name: Download PDF file
+      uses: actions/download-artifact@v3
       with:
         name: uploaded_pdf
-        path: ${{ github.event.inputs.pdf_file }}
+        path: ./
+
+    - name: Rename file
+      run: |
+        mv uploaded_pdf.pdf ${{ github.event.inputs.file_name }}
 
     - name: Run script
       run: |
-        python stet.py
+        python script.py "${{ github.event.inputs.file_name }}"
 
     - name: Upload Pie Chart
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: pie_chart
         path: pie_chart.png

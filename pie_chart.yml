@@ -32,7 +32,7 @@ jobs:
 
     - name: Run script
       run: |
-        python script.py
+        python stet.py
 
     - name: Upload Pie Chart
       uses: actions/upload-artifact@v2

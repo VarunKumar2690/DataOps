@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       file_name:
-        description: 'Name of the PDF file to upload'
+        description: 'Name of the PDF file in the repository'
         required: true
 
 jobs:
@@ -24,19 +24,13 @@ jobs:
       run: |
         pip install PyPDF2 matplotlib
 
-    - name: Download PDF file
-      uses: actions/download-artifact@v3
-      with:
-        name: uploaded_pdf
-        path: ./
-
     - name: Rename file
       run: |
-        mv uploaded_pdf.pdf ${{ github.event.inputs.file_name }}
+        mv "${{ github.event.inputs.file_name }}" uploaded_pdf.pdf
 
     - name: Run script
       run: |
-        python script.py "${{ github.event.inputs.file_name }}"
+        python script.py uploaded_pdf.pdf
 
     - name: Upload Pie Chart
       uses: actions/upload-artifact@v4

@@ -1,3 +1,4 @@
+import sys
 import re
 from PyPDF2 import PdfReader
 import matplotlib.pyplot as plt

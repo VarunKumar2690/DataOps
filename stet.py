@@ -70,6 +70,7 @@ def print_correct_candidate_pairs(content):
         plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
         plt.title('Distribution of Subjects')
         plt.show()
+        plt.savefig(output_path)
 
 # Custom function to format the labels
 def autopct_format(values):
@@ -84,10 +85,18 @@ def autopct_format(values):
 # Main program
 if __name__ == "__main__":
     # Replace with your PDF filename
-    pdf_filename = 'shashank.pdf'
+    # pdf_filename = 'shashank.pdf'
+    # Check if the script received exactly one argument
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <pdf_file>")
+        sys.exit(1)
+    
+    # The file name is provided as a command-line argument
+    pdf_path = sys.argv[1]
+    output_path = 'pie_chart.png
     
     # Read PDF content
-    pdf_content = read_pdf(pdf_filename)
+    pdf_content = read_pdf(pdf_path)
     
     # Print correct and candidate answer pairs
     print_correct_candidate_pairs(pdf_content)

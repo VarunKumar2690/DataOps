@@ -48,7 +48,7 @@ jobs:
 
     - name: Run script
       run: |
-        python script.py uploaded_pdf.pdf
+        python stet.py uploaded_pdf.pdf
 
     - name: Upload Pie Chart
       uses: actions/upload-artifact@v4

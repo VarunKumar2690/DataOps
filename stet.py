@@ -74,15 +74,15 @@ def print_correct_candidate_pairs(content):
             f"Total Marks: {total_marks}"
         ]
         # Creating the pie chart
-        plt.figure(figsize=(8, 6))
+        plt.figure(figsize=(14, 7.5))
         plt.pie(sizes, labels=labels, autopct=autopct_format(sizes), startangle=140)
 
         # Adding a legend with additional data
-        plt.legend(extra_info, loc='upper right', bbox_to_anchor=(1, 1), title="Marks Information")
+        plt.legend(extra_info, loc='upper right', bbox_to_anchor=(1.1, 1.1), title="Marks Information")
         
         plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
         title_text= 'Distribution of Subjects'
-        plt.figtext(0.5, 0.1, title_text, ha='center', va='center', fontsize=14, fontweight='bold')
+        plt.figtext(0.5, 0.06, title_text, ha='center', va='center', fontsize=14, fontweight='bold')
         plt.show()
         plt.savefig(output_path)
 

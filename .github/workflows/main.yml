@@ -1,19 +1,37 @@
-name: Generate Pie Chart from PDF
+name: Process PDF and Generate Pie Chart
 
 on:
   workflow_dispatch:
     inputs:
       file_name:
-        description: 'Name of the PDF file in the repository'
+        description: 'Name of the PDF file to upload'
         required: true
 
 jobs:
-  build:
+  upload:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+
+    - name: Upload PDF file
+      uses: actions/upload-artifact@v4
+      with:
+        name: uploaded_pdf
+        path: path/to/your/pdf_file.pdf
+
+  process:
+    runs-on: ubuntu-latest
+    needs: upload  # This ensures that the `upload` job is completed before this job starts
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Download PDF file
+      uses: actions/download-artifact@v4
+      with:
+        name: uploaded_pdf
+        path: ./
 
     - name: Set up Python
       uses: actions/setup-python@v4

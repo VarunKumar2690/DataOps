@@ -1,0 +1,41 @@
+name: Generate Pie Chart from PDF
+
+on:
+  workflow_dispatch:
+    inputs:
+      pdf_file:
+        description: 'Upload your PDF file'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        pip install PyPDF2 matplotlib
+
+    - name: Upload PDF file
+      uses: actions/upload-artifact@v2
+      with:
+        name: uploaded_pdf
+        path: ${{ github.event.inputs.pdf_file }}
+
+    - name: Run script
+      run: |
+        python script.py
+
+    - name: Upload Pie Chart
+      uses: actions/upload-artifact@v2
+      with:
+        name: pie_chart
+        path: pie_chart.png

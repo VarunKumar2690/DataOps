@@ -65,11 +65,24 @@ def print_correct_candidate_pairs(content):
         labels = list(subject_wise.keys())
         sizes = list(subject_wise.values())
 
+        # Adding the additional data to the legend
+        incorrect= 150-count
+        total_marks=150
+        extra_info = [
+            f"Total Correct Marks: {count}",
+            f"Total Incorrect Marks: {incorrect}",
+            f"Total Marks: {total_marks}"
+        ]
         # Creating the pie chart
         plt.figure(figsize=(8, 6))
         plt.pie(sizes, labels=labels, autopct=autopct_format(sizes), startangle=140)
+
+        # Adding a legend with additional data
+        plt.legend(extra_info, loc='upper right', bbox_to_anchor=(1, 1), title="Marks Information")
+        
         plt.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
-        plt.title('Distribution of Subjects')
+        title_text= 'Distribution of Subjects'
+        plt.figtext(0.5, 0.1, title_text, ha='center', va='center', fontsize=14, fontweight='bold')
         plt.show()
         plt.savefig(output_path)
 
@@ -77,7 +90,7 @@ def print_correct_candidate_pairs(content):
 def autopct_format(values):
     def my_format(pct):
         total = sum(values)
-        val = int(round(pct*total/100.0))
+        val = int(round(pct * total / 100.0))
         return f'{pct:.1f}% ({val})'
     return my_format
 

@@ -94,7 +94,8 @@ if __name__ == "__main__":
     # The file name is provided as a command-line argument
     pdf_path = sys.argv[1]
     output_path = 'pie_chart.png
-    
+
+    print(pdf_path)
     # Read PDF content
     pdf_content = read_pdf(pdf_path)
     

@@ -18,7 +18,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: uploaded_pdf
-        path: path/to/your/pdf_file.pdf
+        path: ${{ github.event.inputs.file_name }}
 
   process:
     runs-on: ubuntu-latest
